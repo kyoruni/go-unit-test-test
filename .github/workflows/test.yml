@@ -1,0 +1,13 @@
+name: ユニットテスト
+on:
+  pull_request:
+    paths: ['go/**/*.go'] # go配下のファイルが変更された場合のみ
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '1.22'
+      - run: go test go/utils/*.go
